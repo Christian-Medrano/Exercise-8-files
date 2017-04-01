@@ -1,7 +1,9 @@
 <?php 
-	$title = 'Mobile Mania';
-
+	$company = 'TechNet';
+	$topic = 'Product Line';
 	$product = 'iPhone';
+	$title = ''.$company.' | '.$topic.': '.$product.'';
+
 	$models = array(
 		'1st Gen',
 		'3G',
@@ -30,6 +32,45 @@
 		'7, 7 Plus' => 'September 16, 2016'
 	);
 
-	$moviesTotal = count($models);
+	$modelsTotal = count($models);
 
  ?>
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title><?php echo $title ?></title>
+ 	<link rel="stylesheet" href="css/bootstrap.css">
+ </head>
+ <body>
+ 	<main class="container py-4">
+      <h1><?php echo $topic; ?>: <?php echo $product; ?></h1>
+      <p>There are <?php echo $modelsTotal; ?> models in the <?php echo $product; ?> product line</p>
+      <ul class="list-group pb-4" style="max-width: 20rem;">
+        <?php
+          foreach ($models as $model) {
+              echo '<li class="list-group-item">'.$product.' '.$model.'</li>';
+          }
+          // Let's unset $movie so it can be used again later
+          unset($model);
+        ?>
+      </ul>
+      <p>The best <?php echo $product; ?> movie is <?php echo $models[4]; ?>.</p>
+      <hr>
+      <h2 class="h5 mb-4">The <?php echo $product; ?> models were released on the following Dates:</h2>
+      <ul class="list-group pb-4" style="max-width: 20rem;">
+        <?php
+          foreach ($modelYears as $model => $year) {
+              echo '<li class="list-group-item justify-content-between"><strong>'.$product.' '.$model.'</strong> '.$year.'</li>';
+          }
+          // Let's unset $movie so it can be used again later
+          unset($model);
+        ?>
+      </ul>
+    </main>
+    <footer class="container">
+      <hr>
+      <?php echo '<p>Copyright &copy; '.date('Y').' '.$company.'. All rights reserved.</p>'; ?> 
+ </body>
+ </html>
